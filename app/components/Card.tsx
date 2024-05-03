@@ -3,28 +3,41 @@ import React from 'react';
 
 interface CardProps {
   children: React.ReactNode;
+  onClick?: () => void;
+  as?: 'section' | 'article' | 'div';
   color?: string;
   width?: string;
   height?: string;
   margin?: string;
+  padding?: string;
   shadow?: string;
   rounded?: string;
+  borderColor?: string;
+  borderWidth?: string;
 }
 
 export const Card: React.FC<CardProps> = ({
   children,
-  color = 'bg-white',   // Default background color
-  width = 'auto',       // Default width
-  height = 'auto',      // Default height
-  margin = 'm-2',       // Default margin
-  shadow = 'shadow-lg', // Default shadow
-  rounded = 'rounded-lg',// Default rounded corners
+  onClick,
+  as = 'div',
+  color = 'bg-white',
+  width = 'auto',
+  height = 'auto',
+  margin = 'm-2',
+  padding = 'p-4',
+  shadow = 'shadow-lg',
+  rounded = 'rounded-lg',
+  borderColor = 'border-transparent',
+  borderWidth = 'border-0',
 }) => {
-  const style = `${color} ${width} ${height} ${margin} ${shadow} ${rounded} p-4`;
+  const Element = as;
+  const borderStyle = `${borderColor} ${borderWidth}`;
+  const style = `${color} ${width} ${height} ${margin} ${padding} ${shadow} ${rounded} ${borderStyle}`;
+  
   return (
-    <div className={style}>
+    <Element className={style} onClick={onClick} role={onClick ? "button" : undefined}>
       {children}
-    </div>
+    </Element>
   );
 };
 
@@ -41,7 +54,7 @@ interface HeaderProps {
     size = 'text-2xl sm:text-4xl',   // Default size
     fontWeight = 'font-bold',       // Default weight
     tracking = 'tracking-tight',      // Default tracking
-    color = 'text-gray-900',       // Default color
+    color = 'text-gray-700',       // Default color
   }) => {
     const style = `${size} ${fontWeight} ${tracking} ${color}`;
     return (
@@ -56,7 +69,7 @@ interface HeaderProps {
     size = 'text-1xl sm:text-2xl',   // Default size
     fontWeight = 'font-bold',       // Default weight
     tracking = 'tracking-tight',      // Default tracking
-    color = 'text-gray-900',       // Default color
+    color = 'text-gray-700',       // Default color
   }) => {
     const style = `${size} ${fontWeight} ${tracking} ${color}`;
     return (
