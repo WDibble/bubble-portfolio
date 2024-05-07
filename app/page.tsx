@@ -21,10 +21,10 @@ export default function Home() {
           </Card>
           <Card as="section" color="bg-emerald-200" width="w-1/2" height="h-96" margin="mb-4" shadow="shadow-none" padding="p-4">
             <H2>Card 2</H2>
-            <Card margin="mb-4" width="w-full" height="h-1/2">
+            <Card margin="mb-4 mt-4" width="w-full" height="h-1/2" rounded="rounded-md" shadow="shadow-none">
             <AreaChartComponent 
               headerText="Global vs Moneycorp Flow"
-              subHeaderText="Flow per day"
+              subHeaderText="Flow Per Day"
               xAxisLabel="Month"
               yAxisLabel="Flow"
             />
